@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/geosite-view/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
+    <meta name="description" content="在浏览器中方便地浏览、查询和筛选 geosite.dat 域名分类数据库。" />
+    <script>
+      (() => {
+        const key = 'geosite-view-theme'
+        let preference = 'system'
+        try {
+          const stored = localStorage.getItem(key)
+          if (stored === 'system' || stored === 'light' || stored === 'dark') {
+            preference = stored
+          }
+        } catch {}
+        const dark =
+          preference === 'dark' ||
+          (preference === 'system' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', dark ? '#0d1117' : '#f6f8fa')
+      })()
+    </script>
+    <title>GeoSite Viewer</title>
+    <script type="module" crossorigin src="/geosite-view/assets/index-CNFLpqta.js"></script>
+    <link rel="stylesheet" crossorigin href="/geosite-view/assets/index-Cww9dQoL.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
